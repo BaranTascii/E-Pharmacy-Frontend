@@ -1,4 +1,5 @@
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import LogoutBtn from "../LogoutBtn/LogoutBtn";
 
 const Header = ({ toggleSidebar }) => {
   return (
@@ -7,6 +8,10 @@ const Header = ({ toggleSidebar }) => {
 
       <div>
         <h2>Dashboard</h2>
+      </div>
+      
+      <div className="header-right">
+        <LogoutBtn />
       </div>
     </header>
   );
