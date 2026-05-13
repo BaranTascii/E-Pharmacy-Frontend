@@ -1,7 +1,13 @@
-const Header = () => {
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
+
+const Header = ({ toggleSidebar }) => {
   return (
-    <header>
-      <h2>Header</h2>
+    <header className="header">
+      <BurgerMenu onClick={toggleSidebar} />
+
+      <div>
+        <h2>Dashboard</h2>
+      </div>
     </header>
   );
 };

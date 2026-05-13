@@ -1,21 +1,76 @@
 @import "modern-normalize";
 
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
+  background-color: #f7f8fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 .layout {
   display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: #fff;
+  border-right: 1px solid #e5e7eb;
+  padding: 24px;
 }
 
 .layout-content {
   flex: 1;
-  padding: 20px;
 }
 
-aside {
-  width: 240px;
-  min-height: 100vh;
-  border-right: 1px solid #ccc;
-  padding: 20px;
+.header {
+  height: 70px;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.main-content {
+  padding: 24px;
+}
+
+.container {
+  width: 100%;
+}
+
+.page-title {
+  margin-bottom: 8px;
+  font-size: 32px;
+}
+
+.page-subtitle {
+  color: #6b7280;
+}
+
+.burger-btn {
+  border: none;
+  background: transparent;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  margin-bottom: 16px;
 }

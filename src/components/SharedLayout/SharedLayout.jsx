@@ -1,17 +1,24 @@
 import { Outlet } from "react-router-dom";
+import { useState } from "react";
 
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 
 const SharedLayout = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
   return (
     <div className="layout">
-      <Sidebar />
+      <Sidebar isOpen={isSidebarOpen} />
 
       <div className="layout-content">
-        <Header />
+        <Header toggleSidebar={toggleSidebar} />
 
-        <main>
+        <main className="main-content">
           <Outlet />
         </main>
       </div>

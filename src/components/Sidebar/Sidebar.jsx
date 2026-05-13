@@ -1,9 +1,11 @@
+import clsx from "clsx";
+
 import Logo from "../Logo/Logo";
 import SidebarMenu from "../SidebarMenu/SidebarMenu";
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen }) => {
   return (
-    <aside>
+    <aside className={clsx("sidebar", isOpen && "sidebar-open")}>
       <Logo />
       <SidebarMenu />
     </aside>
