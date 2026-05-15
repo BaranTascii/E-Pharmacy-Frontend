@@ -1,4 +1,10 @@
+import { useModal } from "../ModalContext";
+
+import EditProductData from "../EditProductData/EditProductData";
+
 const AllProductsTable = ({ products }) => {
+  const { openModal } = useModal();
+
   return (
     <div className="table-wrapper">
       <table className="products-table">
@@ -8,6 +14,7 @@ const AllProductsTable = ({ products }) => {
             <th>Category</th>
             <th>Stock</th>
             <th>Price</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
@@ -21,6 +28,16 @@ const AllProductsTable = ({ products }) => {
               <td>{product.stock}</td>
 
               <td>${product.price}</td>
+
+              <td>
+                <button
+                  onClick={() =>
+                    openModal(<EditProductData product={product} />)
+                  }
+                >
+                  Edit
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
