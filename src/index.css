@@ -122,3 +122,81 @@ nav li {
 .header-right {
   margin-left: auto;
 }
+
+.statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.statistics-card {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.statistics-title {
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.statistics-value {
+  font-size: 32px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.dashboard-card {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.dashboard-card-title {
+  margin-bottom: 24px;
+  font-size: 20px;
+}
+
+.customers-list {
+  list-style: none;
+  padding: 0;
+}
+
+.customer-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.customer-item span {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.income-expenses-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.income-box,
+.expenses-box {
+  flex: 1;
+  background: #f3f4f6;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+@media screen and (max-width: 992px) {
+  .statistics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
