@@ -1,23 +1,45 @@
+import { useSelector } from "react-redux";
+import { selectIncomeExpenses } from "../../redux/dashboard/selectors.js";
+import s from "./IncomeExpenses.module.css";
+
 const IncomeExpenses = () => {
+  const incomeExpenses = useSelector(selectIncomeExpenses);
+
   return (
-    <div className="dashboard-card">
-      <h3 className="dashboard-card-title">
-        Income & Expenses
-      </h3>
+    <table className={s.table}>
+      <caption className={s.tableCaption}>Income/Expenses</caption>
+      <thead>
+        <tr>
+          <th>Today</th>
+        </tr>
+      </thead>
 
-      <div className="income-expenses-wrapper">
-        <div className="income-box">
-          <p>Income</p>
-          <h2>$12,430</h2>
-        </div>
-
-        <div className="expenses-box">
-          <p>Expenses</p>
-          <h2>$4,210</h2>
-        </div>
-      </div>
-    </div>
+      <tbody>
+        {incomeExpenses.map(item => (
+          <tr key={item._id}>
+            <td className={s.status}>
+              <span
+                className={
+                  (item.type === "Expense" && s.expense) ||
+                  (item.type === "Income" && s.income) ||
+                  (item.type === "Error" && s.error)
+                }>
+                {item.type}
+              </span>
+            </td>
+            <td className={s.name}>{item.name}</td>
+            <td
+              className={`${s.price} ${
+                (item.type === "Expense" && s.red) ||
+                (item.type === "Income" && s.green) ||
+                (item.type === "Error" && s.black)
+              }`}>
+              {item.amount}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
-
 export default IncomeExpenses;

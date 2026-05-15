@@ -1,38 +1,38 @@
-const customers = [
-  {
-    id: 1,
-    name: "John Smith",
-    email: "john@example.com",
-  },
-  {
-    id: 2,
-    name: "Emma Wilson",
-    email: "emma@example.com",
-  },
-  {
-    id: 3,
-    name: "Michael Brown",
-    email: "michael@example.com",
-  },
-];
+import { useSelector } from "react-redux";
+import { selectLastCustomers } from "../../redux/dashboard/selectors.js";
+import s from "./RecentCustomers.module.css";
 
 const RecentCustomers = () => {
-  return (
-    <div className="dashboard-card">
-      <h3 className="dashboard-card-title">Recent Customers</h3>
+  const lastCustomers = useSelector(selectLastCustomers);
 
-      <ul className="customers-list">
-        {customers.map((customer) => (
-          <li key={customer.id} className="customer-item">
-            <div>
-              <p>{customer.name}</p>
-              <span>{customer.email}</span>
-            </div>
-          </li>
+  return (
+    <table className={s.table}>
+      <caption className={s.tableCaption}>Recent Customers</caption>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Spent</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {lastCustomers.map((customer) => (
+          <tr key={customer._id}>
+            <td className={s.name}>
+              <img
+                className={s.image}
+                src={customer.photo}
+                alt="Customer Image"
+              />
+              {customer.name}
+            </td>
+            <td className={s.email}>{customer.email}</td>
+            <td className={s.spent}>{customer.spent}</td>
+          </tr>
         ))}
-      </ul>
-    </div>
+      </tbody>
+    </table>
   );
 };
-
 export default RecentCustomers;
