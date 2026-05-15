@@ -1,0 +1,294 @@
+.table {
+  table-layout: fixed;
+  width: 671px;
+  padding: 0 14px;
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 0 0 8px 8px;
+  background-color: #ffffff;
+  border-spacing: 0;
+  border-top: 0;
+}
+
+@media (min-width: 768px) {
+  .table {
+    width: 960px;
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table {
+    width: 1280px;
+  }
+}
+
+.tableCaption {
+  padding: 14px;
+  border-radius: 8px 8px 0 0;
+  background-color: #e7f1ed;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #1d1e21;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .tableCaption {
+    padding: 20px;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+.table th {
+  padding: 14px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: rgba(29, 30, 33, 0.4);
+  text-align: left;
+}
+
+.table th:nth-child(1) {
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  .table th {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.29;
+  }
+}
+
+.table th:not(:last-child) {
+  border-right: 1px solid rgba(29, 30, 33, 0.1);
+}
+
+.table th.userInfo {
+  max-width: 114px;
+  width: 114px;
+}
+
+@media (min-width: 768px) {
+  .table th.userInfo {
+    max-width: 205px;
+    width: 205px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table th.userInfo {
+    max-width: 265px;
+    width: 265px;
+  }
+}
+
+.table th.address {
+  max-width: 110px;
+  width: 110px;
+}
+
+@media (min-width: 768px) {
+  .table th.address {
+    max-width: 158px;
+    width: 158px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table th.address {
+    max-width: 218px;
+    width: 218px;
+  }
+}
+
+.table th.products {
+  max-width: 96px;
+  width: 96px;
+}
+
+@media (min-width: 768px) {
+  .table th.products {
+    max-width: 131px;
+    width: 131px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table th.products {
+    max-width: 191px;
+    width: 191px;
+  }
+}
+
+.table th.order_date {
+  max-width: 121px;
+  width: 121px;
+}
+
+@media (min-width: 768px) {
+  .table th.order_date {
+    max-width: 172px;
+    width: 172px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table th.order_date {
+    max-width: 232px;
+    width: 232px;
+  }
+}
+
+.table th.price {
+  max-width: 85px;
+  width: 85px;
+}
+
+@media (min-width: 768px) {
+  .table th.price {
+    max-width: 125px;
+    width: 125px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table th.price {
+    max-width: 184px;
+    width: 184px;
+  }
+}
+
+.table th.status {
+  max-width: 117px;
+  width: 117px;
+}
+
+@media (min-width: 768px) {
+  .table th.status {
+    max-width: 129px;
+    width: 129px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table th.status {
+    max-width: 150px;
+    width: 150px;
+  }
+}
+
+.table td {
+  padding: 14px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: #1d1e21;
+  border-top: 1px solid rgba(29, 30, 33, 0.1);
+}
+
+.table td:nth-child(1) {
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  .table td {
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.125;
+  }
+}
+
+.table td:not(:last-child) {
+  border-right: 1px solid rgba(29, 30, 33, 0.1);
+}
+
+.table tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .table tr:last-child td {
+    padding-bottom: 30px;
+  }
+}
+
+.table td.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .table td.userInfo {
+    align-items: center;
+    flex-direction: row;
+  }
+}
+
+.image {
+  width: 24px;
+  height: 24px;
+  border-radius: 30px;
+  background-color: #dcdddf;
+}
+
+@media (min-width: 768px) {
+  .image {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .table td.address {
+    padding-right: 8px;
+  }
+}
+
+.statusBadge {
+  border-radius: 40px;
+  padding: 4px 12px;
+  width: 83px;
+  height: 23px;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: -0.05em;
+  text-align: center;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .statusBadge {
+    width: 92px;
+    height: 25px;
+    font-size: 14px;
+  }
+}
+
+.completed {
+  background-color: rgba(89, 177, 122, 0.1);
+  color: #59b17a;
+}
+
+.confirmed {
+  background-color: rgba(128, 89, 228, 0.1);
+  color: #8059e4;
+}
+
+.pending {
+  background-color: rgba(247, 144, 66, 0.1);
+  color: #f79042;
+}
+
+.cancelled {
+  background-color: rgba(232, 80, 80, 0.1);
+  color: #e85050;
+}
+
+.processing {
+  background-color: rgba(112, 166, 232, 0.1);
+  color: #70a6e8;
+}
