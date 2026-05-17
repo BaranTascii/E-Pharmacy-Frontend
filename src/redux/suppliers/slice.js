@@ -1,13 +1,65 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { addSupplier, fetchSuppliers, updateSupplier } from "./operations.js";
 
 const initialState = {
-  items: [],
+  suppliers: [],
+  totalPages: null,
+  isLoading: false,
+  isError: null,
 };
 
 const suppliersSlice = createSlice({
   name: "suppliers",
   initialState,
-  reducers: {},
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchSuppliers.fulfilled, (state, action) => {
+        state.suppliers = action.payload.data.data;
+        state.totalPages = action.payload.data.totalPages;
+      })
+      .addCase(updateSupplier.fulfilled, (state, action) => {
+        const index = state.suppliers.findIndex(
+          (supplier) => supplier._id === action.payload.data._id,
+        );
+        if (index !== -1) {
+          state.suppliers[index] = action.payload.data;
+        }
+      })
+      .addMatcher(
+        isAnyOf(
+          fetchSuppliers.pending,
+          addSupplier.pending,
+          updateSupplier.pending,
+        ),
+        (state) => {
+          state.isLoading = true;
+          state.isError = null;
+        },
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchSuppliers.fulfilled,
+          addSupplier.fulfilled,
+          updateSupplier.fulfilled,
+        ),
+        (state) => {
+          state.isLoading = false;
+          state.isError = null;
+        },
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchSuppliers.rejected,
+          addSupplier.rejected,
+          updateSupplier.rejected,
+        ),
+        (state, action) => {
+          state.isLoading = false;
+          state.isError = action.payload;
+        },
+      );
+  },
 });
 
-export default suppliersSlice.reducer;
+export const suppliersReducer = suppliersSlice.reducer;

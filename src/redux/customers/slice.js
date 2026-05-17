@@ -1,13 +1,49 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { getCustomerById, fetchCustomers } from "./operations.js";
 
 const initialState = {
-  items: [],
+  customers: [],
+  customer: null,
+  totalPages: null,
+  isLoading: false,
+  isError: null,
 };
 
 const customersSlice = createSlice({
   name: "customers",
   initialState,
-  reducers: {},
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCustomers.fulfilled, (state, action) => {
+        state.customers = action.payload.data.data;
+        state.totalPages = action.payload.data.totalPages;
+      })
+      .addCase(getCustomerById.fulfilled, (state, action) => {
+        state.customer = action.payload.data.data;
+      })
+      .addMatcher(
+        isAnyOf(fetchCustomers.pending, getCustomerById.pending),
+        (state) => {
+          state.isLoading = true;
+          state.isError = null;
+        },
+      )
+      .addMatcher(
+        isAnyOf(fetchCustomers.fulfilled, getCustomerById.fulfilled),
+        (state) => {
+          state.isLoading = false;
+          state.isError = null;
+        },
+      )
+      .addMatcher(
+        isAnyOf(fetchCustomers.rejected, getCustomerById.rejected),
+        (state, action) => {
+          state.isLoading = false;
+          state.isError = action.payload;
+        },
+      );
+  },
 });
 
-export default customersSlice.reducer;
+export const customersReducer = customersSlice.reducer;
