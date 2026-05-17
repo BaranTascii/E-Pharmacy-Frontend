@@ -1,15 +1,11 @@
-import clsx from "clsx";
+import SidebarMenu from "../SidebarMenu/SidebarMenu.jsx";
+import s from "./Sidebar.module.css";
 
-import Logo from "../Logo/Logo";
-import SidebarMenu from "../SidebarMenu/SidebarMenu";
-
-const Sidebar = ({ isOpen }) => {
+const Sidebar = () => {
   return (
-    <aside className={clsx("sidebar", isOpen && "sidebar-open")}>
-      <Logo />
+    <aside className={s.sidebar}>
       <SidebarMenu />
     </aside>
   );
 };
-
 export default Sidebar;

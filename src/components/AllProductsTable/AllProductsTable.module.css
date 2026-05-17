@@ -1,0 +1,269 @@
+.table {
+  table-layout: fixed;
+  width: 511px;
+  padding: 0 14px;
+  border: 1px solid rgba(29, 30, 33, 0.1);
+  border-radius: 0 0 8px 8px;
+  background-color: #ffffff;
+  border-spacing: 0;
+  border-top: 0;
+}
+
+@media (min-width: 768px) {
+  .table {
+    width: 960px;
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table {
+    width: 1280px;
+  }
+}
+
+.tableCaption {
+  padding: 14px;
+  border-radius: 8px 8px 0 0;
+  background-color: #e7f1ed;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #1d1e21;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .tableCaption {
+    padding: 20px;
+    font-size: 18px;
+    line-height: 1.33;
+  }
+}
+
+.table th {
+  padding: 14px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: rgba(29, 30, 33, 0.4);
+  text-align: left;
+}
+
+.table th:nth-child(1) {
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  .table th {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.29;
+  }
+}
+
+.table th:not(:last-child) {
+  border-right: 1px solid rgba(29, 30, 33, 0.1);
+}
+
+.table th.name {
+  max-width: 115px;
+  width: 115px;
+}
+
+@media (min-width: 768px) {
+  .table th.name {
+    max-width: 240px;
+    width: 240px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table th.name {
+    max-width: 276px;
+    width: 276px;
+  }
+}
+
+.table th.category {
+  max-width: 79px;
+  width: 79px;
+}
+
+@media (min-width: 768px) {
+  .table th.category {
+    max-width: 150px;
+    width: 150px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table th.category {
+    max-width: 230px;
+    width: 230px;
+  }
+}
+
+.table th.stock {
+  max-width: 57px;
+  width: 57px;
+}
+
+@media (min-width: 768px) {
+  .table th.stock {
+    max-width: 119px;
+    width: 119px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table th.stock {
+    max-width: 199px;
+    width: 199px;
+  }
+}
+
+.table th.suppliers {
+  max-width: 79px;
+  width: 79px;
+}
+
+@media (min-width: 768px) {
+  .table th.suppliers {
+    max-width: 150px;
+    width: 150px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table th.suppliers {
+    max-width: 226px;
+    width: 226px;
+  }
+}
+
+.table th.price {
+  max-width: 69px;
+  width: 69px;
+}
+
+@media (min-width: 768px) {
+  .table th.price {
+    max-width: 140px;
+    width: 140px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table th.price {
+    max-width: 163px;
+    width: 163px;
+  }
+}
+
+.table th.action {
+  max-width: 89px;
+  width: 89px;
+}
+
+@media (min-width: 768px) {
+  .table th.action {
+    max-width: 121px;
+    width: 121px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .table th.action {
+    max-width: 146px;
+    width: 146px;
+  }
+}
+
+.table td {
+  padding: 30px 8px 30px 14px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: #1d1e21;
+  border-top: 1px solid rgba(29, 30, 33, 0.1);
+}
+
+.table td:nth-child(1) {
+  padding-left: 0;
+}
+
+@media (min-width: 768px) {
+  .table td {
+    padding: 29px 20px;
+    font-size: 16px;
+    line-height: 1.125;
+  }
+}
+
+.table td:not(:last-child) {
+  border-right: 1px solid rgba(29, 30, 33, 0.1);
+}
+
+.table tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .table tr:last-child td {
+    padding-bottom: 30px;
+  }
+}
+
+.table td.actionWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.buttonEdit {
+  border: 1px solid rgba(89, 177, 122, 0.5);
+  border-radius: 30px;
+  padding: 6px;
+  width: 28px;
+  height: 28px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .buttonEdit {
+    padding: 8px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.buttonEditIcon {
+  fill: #59b17a;
+}
+
+.buttonTrash {
+  border: 1px solid rgba(232, 80, 80, 0.5);
+  border-radius: 30px;
+  padding: 6px;
+  width: 28px;
+  height: 28px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .buttonTrash {
+    padding: 8px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.buttonTrashIcon {
+  fill: #e85050;
+}

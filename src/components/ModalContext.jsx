@@ -1,30 +1,40 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, use, useEffect, useState } from "react";
+import ModalBackdrop from "./Modal/ModalBackdrop.jsx";
+import { noScroll } from "../utils/noScroll.js";
 
-const ModalContext = createContext();
+export const ModalContext = createContext();
+
+export const useModal = () => use(ModalContext);
 
 export const ModalProvider = ({ children }) => {
   const [modalContent, setModalContent] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    noScroll(isModalOpen);
+  }, [isModalOpen]);
 
   const openModal = (content) => {
     setModalContent(content);
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    setModalContent(null);
+    setIsModalOpen(false);
   };
 
-  const value = useMemo(
-    () => ({
-      modalContent,
-      openModal,
-      closeModal,
-    }),
-    [modalContent],
-  );
+  const handleCloseModal = (e) => {
+    if ((e.code && e.code === "Escape") || e.target === e.currentTarget) {
+      setModalContent(null);
+    }
+  };
 
   return (
-    <ModalContext.Provider value={value}>{children}</ModalContext.Provider>
+    <ModalContext.Provider
+      value={{ openModal, closeModal, isModalOpen, handleCloseModal }}
+    >
+      {children}
+      {modalContent && <ModalBackdrop>{modalContent}</ModalBackdrop>}
+    </ModalContext.Provider>
   );
 };
-
-export const useModal = () => useContext(ModalContext);
