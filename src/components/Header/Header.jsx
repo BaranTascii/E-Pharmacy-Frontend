@@ -1,20 +1,26 @@
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
-import LogoutBtn from "../LogoutBtn/LogoutBtn";
+import useResponsive from '../../hooks/useResponsive.js';
+import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
+import Logo from '../Logo/Logo.jsx';
+import LogoutBtn from '../LogoutBtn/LogoutBtn.jsx';
+import Subtitle from '../Subtitle/Subtitle.jsx';
+import Title from '../Title/Title.jsx';
+import s from './Header.module.css';
 
-const Header = ({ toggleSidebar }) => {
+const Header = () => {
+  const { isMobile, isTablet, isDesktop } = useResponsive();
+
   return (
-    <header className="header">
-      <BurgerMenu onClick={toggleSidebar} />
-
-      <div>
-        <h2>Dashboard</h2>
+    <header className={s.header}>
+      {(isMobile || isTablet) && <BurgerMenu />}
+      <div className={s.headerWrap}>
+        <Logo />
+        <div className={s.headerTitle}>
+          <Title />
+          <Subtitle />
+        </div>
       </div>
-      
-      <div className="header-right">
-        <LogoutBtn />
-      </div>
+      {isDesktop && <LogoutBtn />}
     </header>
   );
 };
-
 export default Header;
