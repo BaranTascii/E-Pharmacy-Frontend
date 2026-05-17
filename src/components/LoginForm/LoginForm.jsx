@@ -1,67 +1,93 @@
+import { useState } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { useForm } from "react-hook-form";
+import sprite from "../../assets/sprite.svg";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { logIn } from "../../redux/auth/operations.js";
+import s from "./LoginForm.module.css";
 
-import { setCredentials } from "../../redux/auth/slice";
+const loginSchema = yup.object().shape({
+  email: yup
+    .string()
+    .matches(
+      /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
+      "Enter a valid Email",
+    )
+    .required("Email is required!"),
+  password: yup
+    .string()
+    .min(7, "Password must be at least 7 characters")
+    .required("Password is required!"),
+});
 
 const LoginForm = () => {
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+    reset,
+    watch,
+  } = useForm({
+    resolver: yupResolver(loginSchema),
+    mode: "onSubmit",
+  });
 
   const onSubmit = (data) => {
-    dispatch(
-      setCredentials({
-        user: {
-          email: data.email,
-        },
-        token: "fake-token",
-      }),
-    );
-
-    navigate("/");
+    dispatch(logIn(data));
+    reset();
   };
 
+  const passwordValue = watch("password");
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="login-form">
-      <h2 className="login-title">Sign In</h2>
-
-      <div className="form-group">
-        <input
-          type="email"
-          placeholder="Email"
-          {...register("email", {
-            required: "Email is required",
-          })}
-        />
-
-        {errors.email && <p className="error-text">{errors.email.message}</p>}
+    <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+      <div className={s.inputWrapper}>
+        <label className={s.label}>
+          <input
+            {...register("email")}
+            type="text"
+            className={s.input}
+            placeholder="Email address"
+          />
+          {errors.email && <p className={s.error}>{errors.email?.message}</p>}
+        </label>
+        <label className={s.label}>
+          <input
+            {...register("password")}
+            type={isVisiblePassword ? "text" : "password"}
+            className={s.input}
+            placeholder="Password"
+          />
+          {passwordValue && (
+            <button
+              className={`${s.togglePwdBtn}`}
+              type="button"
+              onClick={() => setIsVisiblePassword(!isVisiblePassword)}
+            >
+              {isVisiblePassword ? (
+                <svg width={18} height={18}>
+                  <use href={`${sprite}#icon-eye`}></use>
+                </svg>
+              ) : (
+                <svg width={18} height={18}>
+                  <use href={`${sprite}#icon-eye-off`}></use>
+                </svg>
+              )}
+            </button>
+          )}
+          {errors.password && (
+            <p className={s.error}>{errors.password?.message}</p>
+          )}
+        </label>
       </div>
-
-      <div className="form-group">
-        <input
-          type="password"
-          placeholder="Password"
-          {...register("password", {
-            required: "Password is required",
-          })}
-        />
-
-        {errors.password && (
-          <p className="error-text">{errors.password.message}</p>
-        )}
-      </div>
-
-      <button type="submit" className="submit-btn">
-        Login
+      <button className={s.btn} type="submit">
+        Log in
       </button>
     </form>
   );
 };
-
 export default LoginForm;
