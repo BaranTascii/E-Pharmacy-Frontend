@@ -1,24 +1,24 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-
-import App from "./App";
-
-import { store } from "./redux/store";
-
-import { ModalProvider } from "./components/ModalContext";
-
+import { persistor, store } from "./redux/store.js";
+import { PersistGate } from "redux-persist/integration/react";
+import { ModalProvider } from "./components/ModalContext.jsx";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App.jsx";
+import "modern-normalize";
 import "./index.css";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
     <Provider store={store}>
-      <ModalProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ModalProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <ModalProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ModalProvider>
+      </PersistGate>
     </Provider>
-  </React.StrictMode>,
+  </StrictMode>,
 );
