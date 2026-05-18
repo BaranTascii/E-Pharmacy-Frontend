@@ -1,0 +1,105 @@
+.loginSection {
+  padding-top: 24px;
+}
+
+@media (min-width: 1440px) {
+  .loginSection {
+    padding-top: 28px;
+  }
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 148px;
+}
+
+@media (min-width: 768px) {
+  .logoWrapper {
+    margin-bottom: 204px;
+  }
+}
+
+.logoText {
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: -0.03em;
+}
+
+.loginWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .loginWrap {
+    gap: 50px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .loginWrap {
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 150px;
+    margin-bottom: 5px;
+  }
+}
+
+.loginTitle {
+  max-width: 324px;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.21429;
+}
+
+@media (min-width: 768px) {
+  .loginTitle {
+    max-width: 614px;
+    font-size: 54px;
+    line-height: 1.11111;
+  }
+}
+
+.loginTitle span {
+  color: #59b17a;
+}
+
+.imgPill {
+  position: absolute;
+  top: -56px;
+  left: 208px;
+}
+
+@media (min-width: 768px) {
+  .imgPill {
+    width: 179px;
+    height: 175px;
+    top: -104px;
+    left: 390px;
+  }
+}
+
+.imgElements {
+  position: absolute;
+  top: 666px;
+  right: 0;
+}
+
+@media (min-width: 768px) {
+  .imgElements {
+    top: 761px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .imgElements {
+    position: relative;
+    top: 0;
+    margin-left: auto;
+  }
+}
