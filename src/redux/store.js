@@ -17,10 +17,38 @@ import { productsReducer } from "./products/slice.js";
 import { suppliersReducer } from "./suppliers/slice.js";
 import { customersReducer } from "./customers/slice.js";
 
+const customPersistStorage = {
+  getItem: (key) => {
+    return new Promise((resolve) => {
+      if (typeof window !== "undefined" && window.localStorage) {
+        resolve(window.localStorage.getItem(key));
+      } else {
+        resolve(null);
+      }
+    });
+  },
+  setItem: (key, value) => {
+    return new Promise((resolve) => {
+      if (typeof window !== "undefined" && window.localStorage) {
+        window.localStorage.setItem(key, value);
+      }
+      resolve();
+    });
+  },
+  removeItem: (key) => {
+    return new Promise((resolve) => {
+      if (typeof window !== "undefined" && window.localStorage) {
+        window.localStorage.removeItem(key);
+      }
+      resolve();
+    });
+  },
+};
+
 const persistConfig = {
   key: "root-auth",
   version: 1,
-  storage,
+  storage: customPersistStorage, // Yeni hazırladığımız güvenli yapıyı veriyoruz
   whitelist: ["token"],
 };
 
