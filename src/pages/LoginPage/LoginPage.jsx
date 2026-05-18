@@ -1,11 +1,11 @@
-import Container from '../../components/Container/Container.jsx';
-import LoginForm from '../../components/LoginForm/LoginForm.jsx';
-import Logo from '../../components/Logo/Logo.jsx';
-import pill1x from '../../assets/img/pill@1x.webp';
-import pill2x from '../../assets/img/pill@2x.webp';
-import elements1x from '../../assets/img/elements@1x.webp';
-import elements2x from '../../assets/img/elements@2x.webp';
-import s from './LoginPage.module.css';
+import Container from "../../components/Container/Container.jsx";
+import LoginForm from "../../components/LoginForm/LoginForm.jsx";
+import Logo from "../../components/Logo/Logo.jsx";
+import pill1x from "../../assets/img/pill@1x.webp";
+import pill2x from "../../assets/img/pill@2x.webp";
+import elements1x from "../../assets/img/elements@1x.webp";
+import elements2x from "../../assets/img/elements@2x.webp";
+import s from "./LoginPage.module.css";
 
 const LoginPage = () => {
   return (
@@ -18,7 +18,7 @@ const LoginPage = () => {
           </div>
           <div className={s.loginWrap}>
             <h1 className={s.loginTitle}>
-              Your medication, delivered Say goodbye to all{' '}
+              Your medication, delivered Say goodbye to all{" "}
               <span>your healthcare</span> worries with us
             </h1>
             <img
